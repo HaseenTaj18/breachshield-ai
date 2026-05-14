@@ -1,4 +1,13 @@
 // =====================================
+// RENDER BACKEND URL
+// =====================================
+
+const BASE_URL =
+"https://breachshield-backend.onrender.com";
+
+
+
+// =====================================
 // SHOW FORM SECTION
 // =====================================
 
@@ -19,7 +28,7 @@ function showFormSection() {
 
 
 // =====================================
-// GENERATE REPORT
+// GENERATE FULL AI REPORT
 // =====================================
 
 async function generateFullReport() {
@@ -49,6 +58,10 @@ async function generateFullReport() {
 
 
 
+    // =====================================
+    // VALIDATION
+    // =====================================
+
     if (
 
         email === "" ||
@@ -70,7 +83,12 @@ async function generateFullReport() {
 
 
 
-    loadingGif.style.display = "inline-block";
+    // =====================================
+    // SHOW LOADING
+    // =====================================
+
+    loadingGif.style.display =
+    "inline-block";
 
     dynamicResults.innerHTML = "";
 
@@ -78,11 +96,13 @@ async function generateFullReport() {
 
     try {
 
-        // EMAIL
+        // =====================================
+        // EMAIL CHECK
+        // =====================================
 
         const emailResponse = await fetch(
 
-            "http://127.0.0.1:5000/check_email",
+            `${BASE_URL}/check_email`,
 
             {
 
@@ -106,11 +126,13 @@ async function generateFullReport() {
 
 
 
-        // USERNAME
+        // =====================================
+        // USERNAME CHECK
+        // =====================================
 
         const usernameResponse = await fetch(
 
-            "http://127.0.0.1:5000/check_username",
+            `${BASE_URL}/check_username`,
 
             {
 
@@ -134,11 +156,13 @@ async function generateFullReport() {
 
 
 
-        // PASSWORD
+        // =====================================
+        // PASSWORD CHECK
+        // =====================================
 
         const passwordResponse = await fetch(
 
-            "http://127.0.0.1:5000/check_password",
+            `${BASE_URL}/check_password`,
 
             {
 
@@ -162,11 +186,13 @@ async function generateFullReport() {
 
 
 
-        // URL
+        // =====================================
+        // URL SCAN
+        // =====================================
 
         const urlResponse = await fetch(
 
-            "http://127.0.0.1:5000/scan_url",
+            `${BASE_URL}/scan_url`,
 
             {
 
@@ -190,11 +216,13 @@ async function generateFullReport() {
 
 
 
+        // =====================================
         // AI SUMMARY
+        // =====================================
 
         const aiResponse = await fetch(
 
-            "http://127.0.0.1:5000/ai_summary",
+            `${BASE_URL}/ai_summary`,
 
             {
 
@@ -229,11 +257,18 @@ async function generateFullReport() {
 
 
 
-        loadingGif.style.display = "none";
+        // =====================================
+        // HIDE LOADING
+        // =====================================
+
+        loadingGif.style.display =
+        "none";
 
 
 
-        // RESULTS
+        // =====================================
+        // DISPLAY RESULTS
+        // =====================================
 
         dynamicResults.innerHTML = `
 
@@ -241,15 +276,34 @@ async function generateFullReport() {
 
             <div class="result-card">
 
-                <h3>Email Breach Checker</h3>
+                <h3>Email Breach Analysis</h3>
 
                 <p>
 
+                    <strong>Status:</strong>
                     ${emailData.status}
 
                     <br><br>
 
+                    <strong>Breaches:</strong>
+
+                    <br>
+
                     ${emailData.breaches.join("<br>")}
+
+                </p>
+
+            </div>
+
+
+
+            <div class="result-card">
+
+                <h3>Username Exposure</h3>
+
+                <p>
+
+                    ${usernameData.message}
 
                 </p>
 
@@ -263,7 +317,37 @@ async function generateFullReport() {
 
                 <p>
 
+                    <strong>Strength:</strong>
+
                     ${passwordData.password_strength}
+
+                    <br><br>
+
+                    <strong>Risk:</strong>
+
+                    ${passwordData.risk}
+
+                </p>
+
+            </div>
+
+
+
+            <div class="result-card">
+
+                <h3>URL Threat Analysis</h3>
+
+                <p>
+
+                    <strong>Status:</strong>
+
+                    ${urlData.status}
+
+                    <br><br>
+
+                    <strong>Risk Level:</strong>
+
+                    ${urlData.risk_level}
 
                 </p>
 
@@ -273,7 +357,7 @@ async function generateFullReport() {
 
             <div class="result-card full-width">
 
-                <h3>AI Security Summary</h3>
+                <h3>AI Cybersecurity Summary</h3>
 
                 <p>
 
@@ -286,12 +370,20 @@ async function generateFullReport() {
         </div>
 
         `;
-
     }
+
+
+
+    // =====================================
+    // ERROR HANDLING
+    // =====================================
 
     catch(error) {
 
-        loadingGif.style.display = "none";
+        console.log(error);
+
+        loadingGif.style.display =
+        "none";
 
 
 
@@ -303,7 +395,13 @@ async function generateFullReport() {
 
             <p>
 
-                Backend server is not running.
+                Unable to connect with
+                AI backend server.
+
+                <br><br>
+
+                Please make sure Render
+                deployment is live.
 
             </p>
 
