@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>BreachShield AI</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/icons/favicon.png">
+
+    <link rel="stylesheet"
+        href="style.css">
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+
+
+
+    <!-- BACKGROUND -->
+
+    <div class="bg-grid"></div>
+
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="nav-left">
+
+            <img
+                src="assets/images/logo.png"
+                alt="logo">
+
+            <div>
+
+                <h2>BreachShield AI</h2>
+
+                <p>Cyber Exposure Intelligence</p>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <h1>
+
+                AI Powered
+                Breach Exposure
+                Checker
+
+            </h1>
+
+            <div class="green-line"></div>
+
+            <p>
+
+                Advanced AI cybersecurity platform
+                that analyzes breached emails,
+                usernames, weak passwords,
+                suspicious URLs and generates
+                intelligent cybersecurity
+                threat analysis reports.
+
+            </p>
+
+            <button
+                class="hero-btn"
+                onclick="showFormSection()">
+
+                Start Security Assessment
+
+            </button>
+
+        </div>
+
+
+
+        <div class="hero-right">
+
+            <img
+                src="assets/images/cyber-hero.png"
+                alt="Cyber Hero"
+                class="hero-image">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- MAIN SECTION -->
+
+    <section
+        class="main-section hidden-section"
+        id="mainSection">
+
+        <div class="main-container">
+
+            <div class="right-panel">
+
+                <h2>
+
+                    Generate AI Security Report
+
+                </h2>
+
+                <p class="form-description">
+
+                    Fill the details below and our AI
+                    cybersecurity engine will generate
+                    a professional exposure analysis report.
+
+                </p>
+
+
+
+                <form id="securityForm">
+
+
+
+                    <div class="grid-two">
+
+                        <div class="input-group">
+
+                            <label>Email Address</label>
+
+                            <input
+                                type="email"
+                                id="emailInput"
+                                placeholder="Enter Email Address">
+
+                        </div>
+
+
+
+                        <div class="input-group">
+
+                            <label>Username</label>
+
+                            <input
+                                type="text"
+                                id="usernameInput"
+                                placeholder="Enter Username">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="grid-two">
+
+                        <div class="input-group">
+
+                            <label>Password</label>
+
+                            <input
+                                type="password"
+                                id="passwordInput"
+                                placeholder="Enter Password">
+
+                        </div>
+
+
+
+                        <div class="input-group">
+
+                            <label>Website URL</label>
+
+                            <input
+                                type="text"
+                                id="urlInput"
+                                placeholder="Enter Website URL">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="input-group">
+
+                        <label>Additional Notes</label>
+
+                        <textarea
+                            id="notesInput"
+                            placeholder="Enter suspicious activity or additional security concerns..."></textarea>
+
+                    </div>
+
+
+
+                    <button
+                        type="button"
+                        class="submit-btn"
+                        onclick="generateFullReport()">
+
+                        Generate AI Scan Report
+
+                    </button>
+
+
+
+                    <div class="loading-area">
+
+                        <img
+                            src="assets/animations/loading.gif"
+                            class="loading-gif"
+                            id="loadingGif">
+
+                    </div>
+
+
+
+                    <div id="dynamicResults"></div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+</body>
+
+</html>

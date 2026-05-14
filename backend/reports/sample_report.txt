@@ -1,0 +1,147 @@
+==================================================
+            BREACHSHIELD AI REPORT
+==================================================
+
+Generated On:
+2026-05-14 01:42:17
+
+==================================================
+USER INFORMATION
+==================================================
+
+Email:
+test@gmail.com
+
+Username:
+cyber_admin
+
+==================================================
+EMAIL BREACH ANALYSIS
+==================================================
+
+Status:
+Breached
+
+Breach Count:
+3
+
+Breaches Found:
+LinkedIn 2021, Adobe 2019, Dropbox 2020
+
+Leaked Data:
+Email Address, Password, Phone Number
+
+==================================================
+USERNAME EXPOSURE ANALYSIS
+==================================================
+
+Status:
+Exposed
+
+Message:
+Username 'cyber_admin' appears in multiple suspicious public datasets and exposure indicators were detected.
+
+==================================================
+PASSWORD SECURITY ANALYSIS
+==================================================
+
+Strength:
+Medium
+
+Risk:
+Medium
+
+Security Score:
+65
+
+Feedback:
+Add more special characters, Increase password length
+
+==================================================
+URL SECURITY ANALYSIS
+==================================================
+
+Status:
+warning
+
+Risk Level:
+Medium
+
+Risk Score:
+45
+
+Threats Detected:
+Suspicious keyword detected: login,
+Shortened URL detected
+
+==================================================
+AI RISK ANALYSIS
+==================================================
+
+Risk Score:
+75
+
+Risk Level:
+Medium
+
+Threat Status:
+Warning
+
+Recommendations:
+
+• Change passwords immediately for breached accounts.
+
+• Enable Two-Factor Authentication.
+
+• Avoid suspicious websites and phishing links.
+
+• Use password managers for stronger credentials.
+
+==================================================
+AI CYBERSECURITY SUMMARY
+==================================================
+
+Executive Summary:
+
+The cybersecurity assessment identified moderate exposure risks associated with the provided email address and username. Multiple historical breaches were detected, increasing the possibility of credential reuse attacks.
+
+Threat Analysis:
+
+The submitted URL displayed suspicious phishing-related indicators. Password security analysis also revealed moderate weaknesses which may increase account compromise risks.
+
+Exposure Analysis:
+
+The email address was found in multiple breach datasets, exposing sensitive information including passwords and phone numbers.
+
+Password Security Insights:
+
+The password requires stronger complexity including additional symbols and longer character combinations.
+
+URL Threat Intelligence:
+
+The analyzed URL contained phishing-related keywords and shortened-link indicators commonly used in social engineering attacks.
+
+Recommended Actions:
+
+• Change all reused passwords immediately
+• Enable Multi-Factor Authentication
+• Avoid clicking suspicious login links
+• Monitor accounts for unusual activity
+• Use password managers
+
+Final AI Security Conclusion:
+
+The overall cybersecurity posture is moderate risk. Immediate remediation steps are recommended to reduce future exposure risks and strengthen account security.
+
+==================================================
+FINAL SECURITY CONCLUSION
+==================================================
+
+This report was generated using
+BreachShield AI cybersecurity engine
+with AI-powered threat intelligence
+analysis powered by Gemini AI.
+
+==================================================
+END OF REPORT
+==================================================

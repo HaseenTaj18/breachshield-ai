@@ -1,0 +1,622 @@
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #f1f5f9,
+        #e2e8f0,
+        #cbd5e1
+    );
+
+    color: #0f172a;
+
+    overflow-x: hidden;
+}
+
+
+
+/* GRID */
+
+.bg-grid {
+
+    position: fixed;
+
+    width: 100%;
+
+    height: 100%;
+
+    background-image:
+    linear-gradient(
+        rgba(15,23,42,0.03) 1px,
+        transparent 1px
+    ),
+    linear-gradient(
+        90deg,
+        rgba(15,23,42,0.03) 1px,
+        transparent 1px
+    );
+
+    background-size: 50px 50px;
+
+    z-index: -1;
+}
+
+
+
+/* NAVBAR */
+
+nav {
+
+    width: 100%;
+
+    padding: 20px 8%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: white;
+
+    border-bottom:
+    1px solid rgba(15,23,42,0.08);
+}
+
+
+
+/* NAV LEFT */
+
+.nav-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.nav-left img {
+
+    width: 60px;
+}
+
+.nav-left h2 {
+
+    font-size: 1.7rem;
+
+    font-weight: 700;
+
+    color: black;
+}
+
+.nav-left p {
+
+    color: #64748b;
+
+    font-size: 0.9rem;
+}
+
+
+
+/* HERO */
+
+.hero {
+
+    width: 90%;
+
+    min-height: 90vh;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 60px;
+}
+
+
+
+/* HERO LEFT */
+
+.hero-left {
+
+    flex: 1;
+}
+
+.hero-left h1 {
+
+    font-size: 4.5rem;
+
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+
+    font-weight: 800;
+
+    color: black;
+}
+
+
+
+/* GREEN LINE */
+
+.green-line {
+
+    width: 180px;
+
+    height: 5px;
+
+    background: #84cc16;
+
+    border-radius: 10px;
+
+    margin-bottom: 35px;
+}
+
+
+
+/* PARAGRAPH */
+
+.hero-left p {
+
+    color: #475569;
+
+    line-height: 2;
+
+    font-size: 1.1rem;
+
+    max-width: 700px;
+
+    margin-bottom: 40px;
+}
+
+
+
+/* BUTTON */
+
+.hero-btn {
+
+    padding: 18px 40px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: #0ea5e9;
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+    0 0 20px rgba(14,165,233,0.3);
+}
+
+
+
+/* HERO IMAGE */
+
+.hero-right {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.hero-image {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    border-radius: 30px;
+
+    box-shadow:
+    0 0 30px rgba(0,0,0,0.1);
+}
+
+
+
+/* MAIN SECTION */
+
+.main-section {
+
+    width: 100%;
+
+    padding: 100px 0;
+}
+
+.hidden-section {
+
+    display: none;
+}
+
+
+
+/* CONTAINER */
+
+.main-container {
+
+    width: 90%;
+
+    margin: auto;
+
+    background: white;
+
+    border-radius: 30px;
+
+    padding: 60px;
+
+    border:
+    1px solid rgba(15,23,42,0.08);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+}
+
+
+
+/* PANEL */
+
+.right-panel h2 {
+
+    font-size: 2.5rem;
+
+    margin-bottom: 20px;
+
+    color: black;
+}
+
+
+
+/* DESCRIPTION */
+
+.form-description {
+
+    color: #64748b;
+
+    line-height: 2;
+
+    margin-bottom: 45px;
+}
+
+
+
+/* GRID */
+
+.grid-two {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+
+
+/* INPUT GROUP */
+
+.input-group {
+
+    margin-bottom: 28px;
+}
+
+
+
+/* LABEL */
+
+label {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: black;
+
+    font-weight: 500;
+}
+
+
+
+/* INPUT */
+
+input,
+textarea {
+
+    width: 100%;
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    border:
+    1px solid #cbd5e1;
+
+    background: #f8fafc;
+
+    color: black;
+
+    outline: none;
+
+    font-size: 1rem;
+}
+
+
+
+/* PLACEHOLDER */
+
+input::placeholder,
+textarea::placeholder {
+
+    color: #94a3b8;
+}
+
+
+
+/* FOCUS */
+
+input:focus,
+textarea:focus {
+
+    border:
+    1px solid #0ea5e9;
+
+    box-shadow:
+    0 0 10px rgba(14,165,233,0.15);
+}
+
+
+
+/* TEXTAREA */
+
+textarea {
+
+    resize: none;
+
+    height: 150px;
+}
+
+
+
+/* SUBMIT BUTTON */
+
+.submit-btn {
+
+    width: 100%;
+
+    padding: 20px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0ea5e9,
+        #0284c7
+    );
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-top: 15px;
+}
+
+
+
+/* LOADING */
+
+.loading-area {
+
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+.loading-gif {
+
+    width: 80px;
+
+    display: none;
+}
+
+
+
+/* RESULTS */
+
+#dynamicResults {
+
+    margin-top: 50px;
+}
+
+.results-section {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+
+
+/* CARD */
+
+.result-card {
+
+    background: #f8fafc;
+
+    border:
+    1px solid #e2e8f0;
+
+    border-radius: 20px;
+
+    padding: 28px;
+
+    line-height: 1.9;
+}
+
+.result-card h3 {
+
+    color: #0284c7;
+
+    margin-bottom: 18px;
+}
+
+
+
+/* FULL */
+
+.full-width {
+
+    grid-column: span 2;
+}
+
+
+
+/* DASHBOARD */
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 20px;
+}
+
+.dashboard-box {
+
+    background: white;
+
+    border:
+    1px solid #e2e8f0;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    text-align: center;
+}
+
+.dashboard-box h4 {
+
+    color: #64748b;
+
+    margin-bottom: 10px;
+}
+
+.dashboard-box p {
+
+    font-size: 1.5rem;
+
+    font-weight: 700;
+
+    color: black;
+}
+
+
+
+/* DOWNLOAD */
+
+.download-btn {
+
+    width: 100%;
+
+    padding: 20px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: #84cc16;
+
+    color: black;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-top: 30px;
+}
+
+
+
+/* RESPONSIVE */
+
+@media(max-width: 1000px) {
+
+    .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding-top: 40px;
+    }
+
+    .green-line {
+
+        margin: auto auto 30px;
+    }
+
+    .hero-left h1 {
+
+        font-size: 3.2rem;
+    }
+}
+
+@media(max-width: 700px) {
+
+    .grid-two,
+    .results-section,
+    .dashboard-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+
+        grid-column: span 1;
+    }
+
+    .main-container {
+
+        padding: 35px;
+    }
+}
