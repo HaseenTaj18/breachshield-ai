@@ -121,6 +121,13 @@ async function generateFullReport() {
             }
         );
 
+        if (!emailResponse.ok) {
+
+            throw new Error(
+                "Email API failed"
+            );
+        }
+
         const emailData =
         await emailResponse.json();
 
@@ -150,6 +157,13 @@ async function generateFullReport() {
                 })
             }
         );
+
+        if (!usernameResponse.ok) {
+
+            throw new Error(
+                "Username API failed"
+            );
+        }
 
         const usernameData =
         await usernameResponse.json();
@@ -181,6 +195,13 @@ async function generateFullReport() {
             }
         );
 
+        if (!passwordResponse.ok) {
+
+            throw new Error(
+                "Password API failed"
+            );
+        }
+
         const passwordData =
         await passwordResponse.json();
 
@@ -211,6 +232,13 @@ async function generateFullReport() {
             }
         );
 
+        if (!urlResponse.ok) {
+
+            throw new Error(
+                "URL API failed"
+            );
+        }
+
         const urlData =
         await urlResponse.json();
 
@@ -239,18 +267,25 @@ async function generateFullReport() {
                     email: email,
 
                     breach_count:
-                    emailData.breach_count,
+                    emailData.breach_count || 0,
 
                     password_strength:
-                    passwordData.password_strength,
+                    passwordData.password_strength || "Unknown",
 
                     url_status:
-                    urlData.status,
+                    urlData.status || "Unknown",
 
                     notes: notes
                 })
             }
         );
+
+        if (!aiResponse.ok) {
+
+            throw new Error(
+                "AI Summary API failed"
+            );
+        }
 
         const aiData =
         await aiResponse.json();
@@ -281,7 +316,8 @@ async function generateFullReport() {
                 <p>
 
                     <strong>Status:</strong>
-                    ${emailData.status}
+
+                    ${emailData.status || "No data"}
 
                     <br><br>
 
@@ -289,7 +325,7 @@ async function generateFullReport() {
 
                     <br>
 
-                    ${emailData.breaches.join("<br>")}
+                    ${(emailData.breaches || []).join("<br>")}
 
                 </p>
 
@@ -303,7 +339,7 @@ async function generateFullReport() {
 
                 <p>
 
-                    ${usernameData.message}
+                    ${usernameData.message || "No data"}
 
                 </p>
 
@@ -319,13 +355,13 @@ async function generateFullReport() {
 
                     <strong>Strength:</strong>
 
-                    ${passwordData.password_strength}
+                    ${passwordData.password_strength || "Unknown"}
 
                     <br><br>
 
                     <strong>Risk:</strong>
 
-                    ${passwordData.risk}
+                    ${passwordData.risk || "Unknown"}
 
                 </p>
 
@@ -341,13 +377,13 @@ async function generateFullReport() {
 
                     <strong>Status:</strong>
 
-                    ${urlData.status}
+                    ${urlData.status || "Unknown"}
 
                     <br><br>
 
                     <strong>Risk Level:</strong>
 
-                    ${urlData.risk_level}
+                    ${urlData.risk_level || "Unknown"}
 
                 </p>
 
@@ -361,7 +397,8 @@ async function generateFullReport() {
 
                 <p>
 
-                    ${aiData.summary.replace(/\n/g,"<br>")}
+                    ${(aiData.summary || "No AI summary generated")
+                    .replace(/\n/g,"<br>")}
 
                 </p>
 
@@ -395,13 +432,19 @@ async function generateFullReport() {
 
             <p>
 
-                Unable to connect with
-                AI backend server.
+                ${error.message}
 
                 <br><br>
 
-                Please make sure Render
-                deployment is live.
+                Please check:
+                <br>
+                • Render backend is live
+                <br>
+                • Flask routes are correct
+                <br>
+                • Gemini API key exists
+                <br>
+                • Backend redeployed successfully
 
             </p>
 
