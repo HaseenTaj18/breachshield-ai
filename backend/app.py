@@ -32,23 +32,32 @@ from risk_analysis import analyze_risk
 
 app = Flask(__name__)
 
-CORS(app)
+# =========================================
+# ENABLE CORS
+# =========================================
+
+CORS(
+    app,
+    resources={
+        r"/*": {
+            "origins": "*"
+        }
+    }
+)
 
 # =========================================
 # HOME ROUTE
 # =========================================
 
-@app.route("/")
-
+@app.route("/", methods=["GET"])
 def home():
 
     return jsonify({
 
         "message":
-        "BreachShield AI Backend Running"
+        "BreachShield AI Backend Running Successfully"
 
     })
-
 
 
 # =========================================
@@ -57,7 +66,7 @@ def home():
 
 @app.route(
     "/check_email",
-    methods=["POST"]
+    methods=["POST", "OPTIONS"]
 )
 
 def check_email():
@@ -68,8 +77,6 @@ def check_email():
 
         email = data.get("email")
 
-
-
         if not email:
 
             return jsonify({
@@ -79,15 +86,9 @@ def check_email():
 
             }), 400
 
-
-
         result = check_email_breach(email)
 
-
-
         return jsonify(result)
-
-
 
     except Exception as error:
 
@@ -99,14 +100,13 @@ def check_email():
         }), 500
 
 
-
 # =========================================
 # USERNAME CHECK
 # =========================================
 
 @app.route(
     "/check_username",
-    methods=["POST"]
+    methods=["POST", "OPTIONS"]
 )
 
 def check_username():
@@ -117,8 +117,6 @@ def check_username():
 
         username = data.get("username")
 
-
-
         if not username:
 
             return jsonify({
@@ -128,15 +126,9 @@ def check_username():
 
             }), 400
 
-
-
         result = check_username_breach(username)
 
-
-
         return jsonify(result)
-
-
 
     except Exception as error:
 
@@ -148,14 +140,13 @@ def check_username():
         }), 500
 
 
-
 # =========================================
 # PASSWORD CHECK
 # =========================================
 
 @app.route(
     "/check_password",
-    methods=["POST"]
+    methods=["POST", "OPTIONS"]
 )
 
 def check_password():
@@ -166,8 +157,6 @@ def check_password():
 
         password = data.get("password")
 
-
-
         if not password:
 
             return jsonify({
@@ -177,15 +166,9 @@ def check_password():
 
             }), 400
 
-
-
         result = check_password_strength(password)
 
-
-
         return jsonify(result)
-
-
 
     except Exception as error:
 
@@ -197,14 +180,13 @@ def check_password():
         }), 500
 
 
-
 # =========================================
 # URL SCANNER
 # =========================================
 
 @app.route(
     "/scan_url",
-    methods=["POST"]
+    methods=["POST", "OPTIONS"]
 )
 
 def url_scan():
@@ -215,8 +197,6 @@ def url_scan():
 
         url = data.get("url")
 
-
-
         if not url:
 
             return jsonify({
@@ -226,15 +206,9 @@ def url_scan():
 
             }), 400
 
-
-
         result = scan_url(url)
 
-
-
         return jsonify(result)
-
-
 
     except Exception as error:
 
@@ -246,14 +220,13 @@ def url_scan():
         }), 500
 
 
-
 # =========================================
 # AI SUMMARY
 # =========================================
 
 @app.route(
     "/ai_summary",
-    methods=["POST"]
+    methods=["POST", "OPTIONS"]
 )
 
 def ai_summary():
@@ -261,8 +234,6 @@ def ai_summary():
     try:
 
         data = request.get_json()
-
-
 
         email = data.get("email")
 
@@ -273,8 +244,6 @@ def ai_summary():
         url_status = data.get("url_status")
 
         notes = data.get("notes")
-
-
 
         # =====================================
         # RISK ANALYSIS
@@ -287,8 +256,6 @@ def ai_summary():
             url_status
 
         )
-
-
 
         # =====================================
         # GEMINI AI SUMMARY
@@ -310,8 +277,6 @@ def ai_summary():
 
         )
 
-
-
         return jsonify({
 
             "summary":
@@ -325,8 +290,6 @@ def ai_summary():
 
         })
 
-
-
     except Exception as error:
 
         return jsonify({
@@ -335,7 +298,6 @@ def ai_summary():
             str(error)
 
         }), 500
-
 
 
 # =========================================
@@ -352,13 +314,11 @@ if __name__ == "__main__":
         )
     )
 
-
-
     app.run(
 
         host="0.0.0.0",
 
         port=port,
 
-        debug=True
+        debug=False
     )
