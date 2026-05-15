@@ -309,6 +309,8 @@ async function generateFullReport() {
 
         <div class="results-section">
 
+            <!-- 1 -->
+
             <div class="result-card">
 
                 <h3>Email Breach Analysis</h3>
@@ -333,6 +335,8 @@ async function generateFullReport() {
 
 
 
+            <!-- 2 -->
+
             <div class="result-card">
 
                 <h3>Username Exposure</h3>
@@ -346,6 +350,8 @@ async function generateFullReport() {
             </div>
 
 
+
+            <!-- 3 -->
 
             <div class="result-card">
 
@@ -369,6 +375,8 @@ async function generateFullReport() {
 
 
 
+            <!-- 4 -->
+
             <div class="result-card">
 
                 <h3>URL Threat Analysis</h3>
@@ -390,6 +398,88 @@ async function generateFullReport() {
             </div>
 
 
+
+            <!-- 5 -->
+
+            <div class="result-card">
+
+                <h3>Dark Web Exposure</h3>
+
+                <p>
+
+                    ${aiData.dark_web_risk || "No exposure detected"}
+
+                </p>
+
+            </div>
+
+
+
+            <!-- 6 -->
+
+            <div class="result-card">
+
+                <h3>Threat Status</h3>
+
+                <p>
+
+                    ${aiData.threat_status || "Secure"}
+
+                </p>
+
+            </div>
+
+
+
+            <!-- 7 -->
+
+            <div class="result-card">
+
+                <h3>Risk Level</h3>
+
+                <p>
+
+                    ${aiData.risk_level || "Low"}
+
+                </p>
+
+            </div>
+
+
+
+            <!-- 8 -->
+
+            <div class="result-card">
+
+                <h3>Security Score</h3>
+
+                <p>
+
+                    ${aiData.security_score || 100}/100
+
+                </p>
+
+            </div>
+
+
+
+            <!-- 9 -->
+
+            <div class="result-card">
+
+                <h3>Security Recommendation</h3>
+
+                <p>
+
+                    ${aiData.recommendation || "No recommendations"}
+
+                </p>
+
+            </div>
+
+
+
+            <!-- 10 -->
 
             <div class="result-card full-width">
 

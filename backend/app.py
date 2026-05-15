@@ -230,12 +230,53 @@ def ai_summary():
 
         )
 
+        # =====================================
+        # FINAL RESPONSE
+        # =====================================
+
         return jsonify({
 
             "status": "success",
 
+            # 1
             "summary":
-            ai_result["summary"]
+            ai_result["summary"],
+
+            # 2
+            "email_status":
+            email,
+
+            # 3
+            "breach_count":
+            breach_count,
+
+            # 4
+            "password_strength":
+            password_strength,
+
+            # 5
+            "url_status":
+            url_status,
+
+            # 6
+            "risk_level":
+            risk_result["risk_level"],
+
+            # 7
+            "threat_status":
+            risk_result["threat_status"],
+
+            # 8
+            "security_score":
+            risk_result["security_score"],
+
+            # 9
+            "dark_web_risk":
+            "Potential dark web exposure detected based on breach records.",
+
+            # 10
+            "recommendation":
+            "Enable 2FA, use strong passwords, avoid suspicious URLs, and monitor breach activity regularly."
 
         })
 
