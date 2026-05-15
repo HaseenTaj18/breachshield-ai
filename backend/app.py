@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 import os
-
 from dotenv import load_dotenv
 
 # =========================================
@@ -33,16 +32,12 @@ from risk_analysis import analyze_risk
 app = Flask(__name__)
 
 # =========================================
-# ENABLE CORS
+# FULL CORS FIX
 # =========================================
 
 CORS(
     app,
-    resources={
-        r"/*": {
-            "origins": "*"
-        }
-    }
+    supports_credentials=True
 )
 
 # =========================================
@@ -54,37 +49,26 @@ def home():
 
     return jsonify({
 
+        "status": "success",
+
         "message":
-        "BreachShield AI Backend Running Successfully"
+        "BreachShield AI Backend Running"
 
     })
 
 
 # =========================================
-# EMAIL BREACH CHECK
+# EMAIL CHECK
 # =========================================
 
-@app.route(
-    "/check_email",
-    methods=["POST", "OPTIONS"]
-)
-
+@app.route("/check_email", methods=["POST"])
 def check_email():
 
     try:
 
         data = request.get_json()
 
-        email = data.get("email")
-
-        if not email:
-
-            return jsonify({
-
-                "error":
-                "Email is required"
-
-            }), 400
+        email = data.get("email", "")
 
         result = check_email_breach(email)
 
@@ -92,10 +76,13 @@ def check_email():
 
     except Exception as error:
 
+        print(error)
+
         return jsonify({
 
-            "error":
-            str(error)
+            "status": "error",
+
+            "message": str(error)
 
         }), 500
 
@@ -104,27 +91,14 @@ def check_email():
 # USERNAME CHECK
 # =========================================
 
-@app.route(
-    "/check_username",
-    methods=["POST", "OPTIONS"]
-)
-
+@app.route("/check_username", methods=["POST"])
 def check_username():
 
     try:
 
         data = request.get_json()
 
-        username = data.get("username")
-
-        if not username:
-
-            return jsonify({
-
-                "error":
-                "Username is required"
-
-            }), 400
+        username = data.get("username", "")
 
         result = check_username_breach(username)
 
@@ -132,10 +106,13 @@ def check_username():
 
     except Exception as error:
 
+        print(error)
+
         return jsonify({
 
-            "error":
-            str(error)
+            "status": "error",
+
+            "message": str(error)
 
         }), 500
 
@@ -144,27 +121,14 @@ def check_username():
 # PASSWORD CHECK
 # =========================================
 
-@app.route(
-    "/check_password",
-    methods=["POST", "OPTIONS"]
-)
-
+@app.route("/check_password", methods=["POST"])
 def check_password():
 
     try:
 
         data = request.get_json()
 
-        password = data.get("password")
-
-        if not password:
-
-            return jsonify({
-
-                "error":
-                "Password is required"
-
-            }), 400
+        password = data.get("password", "")
 
         result = check_password_strength(password)
 
@@ -172,39 +136,29 @@ def check_password():
 
     except Exception as error:
 
+        print(error)
+
         return jsonify({
 
-            "error":
-            str(error)
+            "status": "error",
+
+            "message": str(error)
 
         }), 500
 
 
 # =========================================
-# URL SCANNER
+# URL SCAN
 # =========================================
 
-@app.route(
-    "/scan_url",
-    methods=["POST", "OPTIONS"]
-)
-
+@app.route("/scan_url", methods=["POST"])
 def url_scan():
 
     try:
 
         data = request.get_json()
 
-        url = data.get("url")
-
-        if not url:
-
-            return jsonify({
-
-                "error":
-                "URL is required"
-
-            }), 400
+        url = data.get("url", "")
 
         result = scan_url(url)
 
@@ -212,10 +166,13 @@ def url_scan():
 
     except Exception as error:
 
+        print(error)
+
         return jsonify({
 
-            "error":
-            str(error)
+            "status": "error",
+
+            "message": str(error)
 
         }), 500
 
@@ -224,26 +181,28 @@ def url_scan():
 # AI SUMMARY
 # =========================================
 
-@app.route(
-    "/ai_summary",
-    methods=["POST", "OPTIONS"]
-)
-
+@app.route("/ai_summary", methods=["POST"])
 def ai_summary():
 
     try:
 
         data = request.get_json()
 
-        email = data.get("email")
+        email = data.get("email", "")
 
-        breach_count = data.get("breach_count")
+        breach_count = data.get("breach_count", 0)
 
-        password_strength = data.get("password_strength")
+        password_strength = data.get(
+            "password_strength",
+            "Unknown"
+        )
 
-        url_status = data.get("url_status")
+        url_status = data.get(
+            "url_status",
+            "Unknown"
+        )
 
-        notes = data.get("notes")
+        notes = data.get("notes", "")
 
         # =====================================
         # RISK ANALYSIS
@@ -252,13 +211,15 @@ def ai_summary():
         risk_result = analyze_risk(
 
             breach_count,
+
             password_strength,
+
             url_status
 
         )
 
         # =====================================
-        # GEMINI AI SUMMARY
+        # AI SUMMARY
         # =====================================
 
         ai_result = generate_ai_summary(
@@ -279,6 +240,8 @@ def ai_summary():
 
         return jsonify({
 
+            "status": "success",
+
             "summary":
             ai_result["summary"],
 
@@ -292,10 +255,13 @@ def ai_summary():
 
     except Exception as error:
 
+        print(error)
+
         return jsonify({
 
-            "error":
-            str(error)
+            "status": "error",
+
+            "message": str(error)
 
         }), 500
 
