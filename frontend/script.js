@@ -245,7 +245,7 @@ async function generateFullReport() {
 
 
         // =====================================
-        // AI SUMMARY
+        // AI SUMMARY DATA
         // =====================================
 
         const aiResponse = await fetch(
@@ -472,23 +472,6 @@ async function generateFullReport() {
                 <p>
 
                     ${aiData.recommendation || "No recommendations"}
-
-                </p>
-
-            </div>
-
-
-
-            <!-- 10 -->
-
-            <div class="result-card full-width">
-
-                <h3>AI Cybersecurity Summary</h3>
-
-                <p>
-
-                    ${(aiData.summary || "No AI summary generated")
-                    .replace(/\n/g,"<br>")}
 
                 </p>
 
