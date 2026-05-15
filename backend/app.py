@@ -32,13 +32,10 @@ from risk_analysis import analyze_risk
 app = Flask(__name__)
 
 # =========================================
-# FULL CORS FIX
+# ENABLE CORS
 # =========================================
 
-CORS(
-    app,
-    supports_credentials=True
-)
+CORS(app)
 
 # =========================================
 # HOME ROUTE
@@ -52,13 +49,12 @@ def home():
         "status": "success",
 
         "message":
-        "BreachShield AI Backend Running"
+        "BreachShield AI Backend Running Successfully"
 
     })
 
-
 # =========================================
-# EMAIL CHECK
+# EMAIL BREACH CHECK
 # =========================================
 
 @app.route("/check_email", methods=["POST"])
@@ -86,9 +82,8 @@ def check_email():
 
         }), 500
 
-
 # =========================================
-# USERNAME CHECK
+# USERNAME BREACH CHECK
 # =========================================
 
 @app.route("/check_username", methods=["POST"])
@@ -116,9 +111,8 @@ def check_username():
 
         }), 500
 
-
 # =========================================
-# PASSWORD CHECK
+# PASSWORD SECURITY CHECK
 # =========================================
 
 @app.route("/check_password", methods=["POST"])
@@ -146,13 +140,12 @@ def check_password():
 
         }), 500
 
-
 # =========================================
-# URL SCAN
+# URL THREAT SCAN
 # =========================================
 
 @app.route("/scan_url", methods=["POST"])
-def url_scan():
+def url_threat_scan():
 
     try:
 
@@ -176,9 +169,8 @@ def url_scan():
 
         }), 500
 
-
 # =========================================
-# AI SUMMARY
+# AI SUMMARY GENERATION
 # =========================================
 
 @app.route("/ai_summary", methods=["POST"])
@@ -243,13 +235,7 @@ def ai_summary():
             "status": "success",
 
             "summary":
-            ai_result["summary"],
-
-            "risk_level":
-            risk_result["risk_level"],
-
-            "threat_status":
-            risk_result["threat_status"]
+            ai_result["summary"]
 
         })
 
@@ -264,7 +250,6 @@ def ai_summary():
             "message": str(error)
 
         }), 500
-
 
 # =========================================
 # RUN APP
